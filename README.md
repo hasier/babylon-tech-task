@@ -12,7 +12,7 @@ The technologies used for the implementation have been the following:
 * gunicorn (for prod deploy)
 
 ## Purpose
-The implemented system is a URL shortener that simply accepts an input URL to then provide a short version for it, and another endpoint that, when accessing a short url, redirects to the original one. The service has been though with the following restrictions and evolution steps in mind:
+The implemented system is a URL shortener that simply accepts an input URL to then provide a short version for it, and another endpoint that, when accessing a short url, redirects to the original one. The service has been thought with the following restrictions and evolution steps in mind:
 * This system has been a quick implementation that allows pushing the solution to production with the complete intended complete functionality, but leaving some more complex concepts for future iterations.
 * This should be treated as an MVP. We can see how it behaves and how it is used, and then act according to how the product needs to evolve.
 * The solution has a basic structure for a small server, but with keeping a minimum separation of concerns, allowing easy readability and extension in case the product needs to grow.
