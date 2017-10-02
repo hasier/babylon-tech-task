@@ -14,7 +14,7 @@ from app.utils import jsonify
 
 @app.route('/<path>', methods=['GET'])
 def get_shortened(path):
-    short_url = ShortURLFinder.getURLFromShort(path)
+    short_url = ShortURLFinder.get_url_from_short(path)
     if not short_url:
         raise NotFoundError('Short URL not found')
     return redirect(short_url.url)
@@ -29,7 +29,7 @@ def shorten():
     if not url(req['url'], public=True):
         raise ClientError('Invalid URL', 'malformed_url')
 
-    short_url = ShortURLRepository.saveNewURL(req['url'])
+    short_url = ShortURLRepository.save_new_url(req['url'])
     if not short_url:
         raise CoreError(500, 'Could not shorten the URL, please try again', 'unexpected_server_error')
     return jsonify(ShortURLSerializer.serialize(short_url), status_code=201)

@@ -36,7 +36,7 @@ def setup_errors(app):
         return jsonify(dict(key='url_not_found_error', message='URL not found'), status_code=404)
 
     @app.errorhandler(400)
-    def server_error(err):
+    def client_error(err):
         return jsonify(dict(key='client_error', message='Client error'), status_code=400)
 
     @app.errorhandler(Exception)

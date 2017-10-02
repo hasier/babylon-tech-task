@@ -13,11 +13,11 @@ logger = logging.getLogger(__name__)
 
 class ShortURLRepository(object):
     @classmethod
-    def saveNewURL(cls, url):
-        return cls._saveNewURL(url)
+    def save_new_url(cls, url):
+        return cls._save_new_url(url)
 
     @classmethod
-    def _saveNewURL(cls, url, retry=True):
+    def _save_new_url(cls, url, retry=True):
         s = ShortURL(url=url)
         db.session.add(s)
         try:
@@ -27,7 +27,7 @@ class ShortURLRepository(object):
             db.session.rollback()
             if retry:
                 db.session.expunge(s)
-                s = cls._saveNewURL(url, retry=False)
+                s = cls._save_new_url(url, retry=False)
             else:
                 logger.exception('Unrecoverable integrity error storing new shortened URL')
                 s = None
